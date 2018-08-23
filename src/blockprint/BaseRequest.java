@@ -13,10 +13,15 @@ public class BaseRequest implements Requestable {
 	private String baseURL = "http://artii.herokuapp.com/";
 	private URL requestURL;
 	private HttpURLConnection conn;
-	private String defaultFont;
+	private String defaultFont = "&font=";
 	
-	public BaseRequest() {
-		defaultFont = "";
+	public BaseRequest(String font) {
+		if (font == null) 
+		{
+			defaultFont = "";
+		} else {
+			defaultFont += font;
+		}
 		this.requestURL = null;
 		conn = null;
 	}
@@ -51,7 +56,6 @@ public class BaseRequest implements Requestable {
 		
 		String line;
 		StringBuilder sb = new StringBuilder();
-		int longest_line = 0;
 		while ((line = input.readLine()) != null)
 		{
 			line += '\n';
@@ -63,5 +67,11 @@ public class BaseRequest implements Requestable {
 		
 		
 		return sb.toString();
+	}
+
+	@Override
+	public void setFont(String font) {
+		this.defaultFont = "&font=";
+		this.defaultFont += font;
 	}
 }
