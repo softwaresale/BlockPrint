@@ -29,12 +29,12 @@ public class BaseRequest implements Requestable {
 	@Override
 	public String request(String str) throws IOException{
 		
-		baseURL += "make?text=";
-		baseURL += str;
-		baseURL += this.defaultFont;
+		String url = baseURL + "make?text=";
+		url += str;
+		url += this.defaultFont;
 		
 		try {
-			this.requestURL = new URL(this.baseURL);
+			this.requestURL = new URL(url);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
