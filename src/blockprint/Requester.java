@@ -4,18 +4,18 @@ import java.io.IOException;
 
 public class Requester<T extends Requestable> {
 
-	private T __request;
+	private T request;
 	
 	public Requester(T t)
 	{
-		this.__request = t;
+		this.request = t;
 	}
 	
 	public String request(String str)
 	{
 		String req = null;
 		try {
-			req = __request.request(str);
+			req = request.request(str);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
